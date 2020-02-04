@@ -62,7 +62,7 @@ export default {
       headers: [
         {
           text: "姓名",
-          align: "left",
+          align: "center",
           sortable: false,
           value: "name"
         },

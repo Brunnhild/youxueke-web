@@ -3,36 +3,12 @@
     <v-navigation-drawer v-mode="drawer" app clipped v-if="loginState">
       <v-list dense>
         <v-list-item-group v-model="activeIndex">
-          <v-list-item @click="$router.push({ name: 'search' })">
-            <v-list-item-action>
-              <v-icon>mdi-book-search</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>查找课程</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item @click="$router.push({ name: 'bookings' })">
-            <v-list-item-action>
-              <v-icon>mdi-format-list-bulleted-square</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>已约课程</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item  @click="$router.push({ name: 'verify' })">
-            <v-list-item-action>
-              <v-icon>mdi-checkbox-multiple-marked-outline</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>审核课程</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
           <v-list-item  @click="$router.push({ name: 'users' })">
             <v-list-item-action>
               <v-icon>mdi-phone</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>所有用户</v-list-item-title>
+              <v-list-item-title>用户管理</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item  @click="$router.push({ name: 'teams' })">
@@ -40,7 +16,7 @@
               <v-icon>mdi-home</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>所有团队</v-list-item-title>
+              <v-list-item-title>团队管理</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item  @click="$router.push({ name: 'match' })">
@@ -48,10 +24,17 @@
               <v-icon>info</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>比赛信息</v-list-item-title>
+              <v-list-item-title>活动管理</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-         
+          <v-list-item  @click="$router.push({ name: 'verify' })">
+            <v-list-item-action>
+              <v-icon>mdi-checkbox-multiple-marked-outline</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>课程管理</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
        <v-btn block @click="logoutPrompt = true" style="width: 100px; position:fixed; bottom: 0px">注销</v-btn>
@@ -198,13 +181,10 @@ export default {
   computed: {
     ...mapState(["loginState", "stuId", "identity"]),
     activeIndex() {
-      if (this.$route.path === "/search") return 0;
-      else if (this.$route.path === "/bookings") return 1;
-      else if (this.$route.path === "/verify") return 2;
-      else if (this.$route.path === "/home") return 3;
-      else if (this.$route.path === "/users") return 3;
-      else if (this.$route.path === "/teams") return 4;
-      else if (this.$route.path === "/match") return 6;
+      if (this.$route.path === "/users") return 0;
+      else if (this.$route.path === "/teams") return 1;
+      else if (this.$route.path === "/match") return 2;
+      else if (this.$route.path === "/verify") return 3;
       else return null;
     }
   },

@@ -66,7 +66,7 @@ export default {
       headers: [
         {
           text: "名称",
-          align: "left",
+          align: "center",
           sortable: false,
           value: "name"
         },
